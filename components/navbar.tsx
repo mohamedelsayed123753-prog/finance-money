@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { href: "#home", label: "الرئيسية" },
@@ -12,19 +12,19 @@ const navLinks = [
   { href: "#stats", label: "إنجازاتنا" },
   { href: "#testimonials", label: "آراء العملاء" },
   { href: "#contact", label: "تواصل معنا" },
-]
+];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.nav
@@ -36,14 +36,21 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
+        {/* اللوجو (الحتة اللي صلحناها) */}
         <motion.a
           href="#home"
-          className="text-2xl font-bold text-gradient-gold"
+          className="block"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          الفخامة
+          {/* هيدخل هنا يدور على اللوجو ويجيبه علطول بطول وعرض مناسبين للـ Navbar */}
+          {/* شوف العنوان بقى مختصر وسهل إزاي! */}
+          <img
+            src="/images/BSS-no-bg.png"
+            alt="BSS Logo"
+            // {/* الأمر mix-blend-color-dodge ده هيطير أي خلفية غامقة أو ملونة ويسيب الدهبي منور */}
+            className="h-15  w-auto  "
+          />
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -62,9 +69,7 @@ export function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <Button
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-6"
-          >
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6">
             احجز استشارة
           </Button>
         </div>
@@ -107,5 +112,5 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </motion.nav>
-  )
+  );
 }
