@@ -202,7 +202,7 @@ export function Footer() {
         <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-slate-500 text-xs md:text-sm text-center md:text-right">
-              © {currentYear} الفخامة للاستشارات المالية. جميع الحقوق محفوظة.
+              © {currentYear} مؤسسة بناء الاستراتيجيات للحلول للاستشارات المالية. جميع الحقوق محفوظة.
             </p>
             <p className="text-slate-500 text-xs md:text-sm flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />

@@ -1,11 +1,16 @@
-import { Navbar } from "@/components/navbar"
-import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
-import { ServicesSection } from "@/components/services-section"
-import { StatsSection } from "@/components/stats-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { CTASection } from "@/components/cta-section"
-import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar";
+import { HeroSection } from "@/components/hero-section";
+import { AboutSection } from "@/components/about-section";
+import { ServicesSection } from "@/components/services-section";
+import { StatsSection } from "@/components/stats-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
+import { CTASection } from "@/components/cta-section";
+import { Footer } from "@/components/footer";
+import { MainServices } from "@/components/ui/main service";
+import { FinancingJourney } from "@/components/FinancingJourney";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { FuturePlans } from "@/components/FuturePlans";
+import { ThankYouSection } from "@/components/ThankYouSection";
 
 export default function Home() {
   return (
@@ -17,7 +22,11 @@ export default function Home() {
       <StatsSection />
       <TestimonialsSection />
       <CTASection />
-      <Footer />
+      <MainServices />
+      <FinancingJourney />
+      <WhyChooseUs />
+      <FuturePlans />
+      <ThankYouSection />
     </main>
-  )
+  );
 }
