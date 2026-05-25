@@ -10,7 +10,7 @@ export function FinancingJourney() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 bg-[#030712] text-white">
+    <section id="journey" className="py-24 bg-[#030712] text-white">
       <div className="container mx-auto px-6" ref={ref}>
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4">رحلتك نحو التمويل المناسب</h2>

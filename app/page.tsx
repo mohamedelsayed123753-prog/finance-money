@@ -10,7 +10,7 @@ import { MainServices } from "@/components/ui/main service";
 import { FinancingJourney } from "@/components/FinancingJourney";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { FuturePlans } from "@/components/FuturePlans";
-import { ThankYouSection } from "@/components/ThankYouSection";
+
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
       <FinancingJourney />
       <WhyChooseUs />
       <FuturePlans />
-      <ThankYouSection />
+      <Footer />
     </main>
   );
 }
