@@ -28,7 +28,7 @@ const DATA = {
     ]
   },
   en: {
-    sectionTitle: "FINANCIAL STRATEGY",
+    sectionTitle: "Financial Action Plan",
     steps: [
       {
         id: "step-1",
