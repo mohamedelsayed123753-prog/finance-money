@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { useLanguage } from './LanguageContext'; // ضفت الـ hook
+import { useLanguage } from './LanguageContext';
 
 const DATA = {
   ar: {
@@ -80,16 +80,28 @@ export function AboutSection() {
             className="relative flex justify-center items-center"
           >
             <div className="relative w-full max-w-lg aspect-square flex justify-center items-center">
-              <div className="absolute inset-4 rounded-full border-4 border-purple-600/80 z-20 pointer-events-none" />
-              <div className="absolute inset-6 rounded-full overflow-hidden border-2 border-slate-800 z-10 shadow-2xl">
+              {/* إطار الدائرة المضيء المتحرك */}
+              <motion.div 
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-4 rounded-full border-t-4 border-l-4 border-purple-600/50 z-20 pointer-events-none" 
+              />
+              
+              {/* الصورة داخل الدائرة */}
+              <motion.div 
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-6 rounded-full overflow-hidden border-2 border-slate-800 z-10 shadow-2xl"
+              >
+                {/* >>> هنا تحط مسار صورتك بالضبط (تأكد من وجودها في public/images/) <<< */}
                 <Image
-                  src="/images/background.png"
-                  alt="Feeri Holding Building"
-                  width={500}
-                  height={500}
-                  className="object-cover w-full h-full"
+                  src="/images/aboutUs.png" 
+                  alt="About Feeri Holding"
+                  fill
+                  className="object-cover w-full h-full hover:scale-110 transition-transform duration-700"
                 />
-              </div>
+              </motion.div>
+
               <div className="absolute bottom-0 left-4 z-30 pointer-events-none">
                 <svg width="120" height="120" viewBox="0 0 100 100" className="opacity-80">
                   <path d="M30 40 L5 85 L55 85 Z" fill="#7c3aed" />

@@ -2,7 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Box, FileEdit, Megaphone, Cog } from "lucide-react";
+import Image from "next/image";
+import { Box, FileEdit, Megaphone } from "lucide-react";
 import { useLanguage } from './LanguageContext';
 
 const DATA = {
@@ -35,6 +36,7 @@ export function FuturePlans() {
       <div className="container mx-auto px-6 relative" ref={ref}>
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
+          {/* النص والخدمات */}
           <div className="flex-1 text-right lg:text-start order-2 lg:order-1">
             <h2 className="text-4xl md:text-6xl font-black mb-3 bg-gradient-to-l from-purple-500 to-white bg-clip-text text-transparent leading-tight">
               {data.title}
@@ -50,7 +52,6 @@ export function FuturePlans() {
                   transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
                   className={`flex items-start gap-4 ${lang === 'ar' ? 'justify-end' : 'justify-start'}`}
                 >
-                  {/* الترتيب للـ icon و الـ text بيعتمد على اتجاه اللغة */}
                   {lang === 'ar' ? (
                     <>
                       <p className="text-lg md:text-xl text-slate-300 text-right leading-relaxed max-w-2xl">{plan.text}</p>
@@ -67,16 +68,25 @@ export function FuturePlans() {
             </div>
           </div>
 
+          {/* الصورة - تغطي مساحة السكشن كاملة بحركة الطفو */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-1 flex justify-center order-1 lg:order-2"
+            className="flex-1 w-full h-[400px] lg:h-[500px] overflow-hidden rounded-3xl relative order-1 lg:order-2"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 bg-purple-600 rounded-full flex items-center justify-center shadow-[0_0_60px_rgba(147,51,234,0.3)] transition-shadow duration-300 hover:shadow-[0_0_80px_rgba(147,51,234,0.4)]">
-              <Cog size={130} className="text-white animate-spin-slow md:size-[150px]" />
-              <div className="absolute inset-0 rounded-full border-2 border-purple-400/50 blur-sm pointer-events-none" />
-            </div>
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full h-full"
+            >
+              <Image 
+                src="images/futurePlan.png" 
+                alt="Future Plans" 
+                fill
+                className="object-cover drop-shadow-[0_0_40px_rgba(168,85,247,0.4)]"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

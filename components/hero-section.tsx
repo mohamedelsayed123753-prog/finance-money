@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Play } from "lucide-react";
 import { useLanguage } from './LanguageContext';
+import Image from 'next/image';
 
 const CONTENT = {
   ar: {
@@ -26,7 +27,6 @@ export function HeroSection() {
   const { lang } = useLanguage();
   const data = CONTENT[lang as 'ar' | 'en'] || CONTENT['ar'];
 
-  // دالة الانتقال السلس عشان ننهي التهنيجة نهائياً
   const handleSmoothScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -41,11 +41,35 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712] text-slate-900"
       dir={lang === 'ar' ? 'rtl' : 'ltr'}
     >
-      {/* الخلفية الرقمية (زي ما هي بالظبط) */}
-      <div className="absolute inset-0 z-0 will-change-transform">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f] via-[#030712] to-[#0f172a]" />
+      {/* 1. طبقة الصورة المتحركة (شاملة كل الاتجاهات) */}
+      <motion.div 
+        animate={{ 
+          x: [0, -20, 20, -10, 0], 
+          y: [0, 15, -15, 10, 0],
+          scale: [1, 1.07, 1.04, 1]
+        }}
+        transition={{ 
+          duration: 6, 
+          repeat: Infinity, 
+          ease: "easeInOut" 
+        }}
+        className="absolute inset-0 z-0"
+      >
+        <Image 
+          src="/images/heroImage.png" 
+          alt="Background"
+          fill
+          priority
+          className="object-cover opacity-80"
+        />
+        <div className="absolute inset-0 bg-[#030712]/40" />
+      </motion.div>
+
+      {/* 2. الخلفية الرقمية */}
+      <div className="absolute inset-0 z-10 will-change-transform opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f]/20 via-[#030712]/20 to-[#0f172a]/20" />
         <div 
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage: `linear-gradient(to right, #3b82f6 1px, transparent 1px), linear-gradient(to bottom, #3b82f6 1px, transparent 1px)`,
             backgroundSize: '40px 40px'
@@ -55,7 +79,7 @@ export function HeroSection() {
         <div className="absolute bottom-[-10%] right-[10%] w-[600px] h-[600px] rounded-full bg-purple-600/15 blur-[130px] pointer-events-none" />
       </div>
 
-      {/* المحتوى */}
+      {/* 3. المحتوى */}
       <div className="container mx-auto px-6 relative z-20 pt-20 flex flex-col items-center text-center gap-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -63,7 +87,7 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
           className="space-y-3"
         >
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white drop-shadow-2xl">
             {data.titlePart1}<span className="text-purple-500">{data.titlePart2}</span>
           </h1>
         </motion.div>
@@ -72,7 +96,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-2xl text-slate-200 font-medium leading-relaxed max-w-3xl bg-slate-950/50 backdrop-blur-md p-6 rounded-2xl border border-white/10"
+          className="text-lg md:text-2xl text-white font-medium leading-relaxed max-w-3xl bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-white/10"
         >
           {data.desc}
         </motion.p>
@@ -83,7 +107,6 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2"
         >
-          {/* الأزرار المحدثة بدون التهنيجة */}
           <Button 
             size="lg" 
             onClick={() => handleSmoothScroll('services')}
@@ -96,7 +119,7 @@ export function HeroSection() {
             size="lg" 
             variant="outline" 
             onClick={() => handleSmoothScroll('about')}
-            className="border-purple-500/50 text-purple-400 hover:bg-purple-950/40 px-8 py-6 text-lg font-bold"
+            className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg font-bold"
           >
             {lang === 'ar' ? <Play className="ml-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />} {data.btn2}
           </Button>
