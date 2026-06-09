@@ -1,91 +1,88 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Banknote, BarChart3, Target, Rocket, LucideIcon } from "lucide-react";
-// تعديل الاستيراد ليكون للمجلد الحالي أو المسار الصحيح
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Banknote, BarChart3, Target, Rocket } from "lucide-react";
 import { useLanguage } from '../LanguageContext'; 
 
-// تعريف الـ Interfaces لضمان استقرار الـ TypeScript
-interface Service {
-  icon: LucideIcon;
-  title: string;
-  points: string[];
-}
-
-interface ContentType {
-  sectionTitle: string;
-  services: Service[];
-}
-
-const CONTENT: Record<'ar' | 'en', ContentType> = {
+const CONTENT = {
   ar: {
-    sectionTitle: "خدماتنا الرئيسية",
+    title: "خدماتنا الرئيسية للشركات والمؤسسات",
     services: [
-      { icon: Banknote, title: "إدارة وتأسيس الشركات", points: ["خدمة دراسة الجدوى", "تحليل الأعمال", "إعادة هيكلة الشركات", "تعزيز الحوكمة"] },
-      { icon: BarChart3, title: "الاستشارات المالية", points: ["تحليل البيانات المالية", "خدمة إعداد تقارير المخاطرة", "تصميم الهيكل التنظيمي", "خدمة تأسيس الشركات والمؤسسات"] },
-      { icon: Target, title: "تطوير الأداء المالي", points: ["أعداد وتطوير نظام تطوير الأداء للمؤسسات والشركات", "دراسة أسباب التعثر وهيكلة التسهيلات والتفاوض مع الجهات المقرضة"] },
-      { icon: Rocket, title: "السيولة والائتمان", points: ["خدمة تحسين التدفق النقدي (السيولة)", "دراسة الجدارة الائتمانية للتمويل", "دراسة الوضع الائتماني وطبيعة النشاط لغرض التوسع"] }
+      { icon: Banknote, title: "حوكمة البيانات", points: ["تعزيز الحوكمة", "تحليل البيانات المالية", "دراسات الجدوى"] },
+      { icon: BarChart3, title: "الأداء المالي", points: ["تقارير المخاطرة", "تحليل الأداء المالي", "إعادة الهيكلة المالية"] },
+      { icon: Target, title: "تأسيس واستشارات", points: ["تأسيس الشركات", "استشارات التمويل", "حلول التعثر والربحية"] },
+      { icon: Rocket, title: "تطوير الأداء", points: ["نظم تطوير الأداء", "الجدارة الائتمانية", "توسيع نطاق الأعمال"] }
     ]
   },
   en: {
-    sectionTitle: "OUR MAIN SERVICES",
+    title: "OUR MAIN SERVICES",
     services: [
-      { icon: Banknote, title: "Company Management & Establishment", points: ["Feasibility studies", "Business analysis", "Corporate restructuring", "Governance enhancement"] },
-      { icon: BarChart3, title: "Financial Consulting", points: ["Financial data analysis", "Risk reporting services", "Organizational structure design", "Corporate establishment services"] },
-      { icon: Target, title: "Financial Performance Development", points: ["Developing performance systems for institutions", "Analyzing financial distress and negotiating with lenders"] },
-      { icon: Rocket, title: "Liquidity & Credit", points: ["Cash flow improvement (Liquidity)", "Creditworthiness study for financing", "Credit status & expansion strategy"] }
+      { icon: Banknote, title: "Data Governance", points: ["Strengthening governance", "Financial data analysis", "Feasibility studies"] },
+      { icon: BarChart3, title: "Financial Performance", points: ["Risk reporting service", "Performance analysis", "Capital restructuring"] },
+      { icon: Target, title: "Formation & Consulting", points: ["Company formation", "Funding consulting", "Profitability solutions"] },
+      { icon: Rocket, title: "Performance Development", points: ["Development systems", "Creditworthiness assessment", "Business expansion"] }
     ]
   }
 };
 
+// إعدادات الحاوية السينمائية
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100, damping: 10 } }
+};
+
 export function MainServices() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
-  // استخدام الـ hook اللي بيقرأ من الـ Provider اللي غلفنا بيه الـ Layout
   const { lang } = useLanguage();
-  
   const data = CONTENT[lang as 'ar' | 'en'] || CONTENT['ar'];
 
-  // ضيف السطر ده جوه الكومبوننت عشان نشوف هو شايف اللغة إيه
-console.log("Current Language from Context:", lang);
-
   return (
-    <section 
-      id="MainServices" 
-      className="py-20 bg-[#030712] text-white overflow-hidden" 
-      dir={lang === 'ar' ? 'rtl' : 'ltr'}
-    >
-      <div className="container mx-auto px-6" ref={ref}>
-        {/* العنوان بيتغير حسب اللغة والـ Direction */}
-        <h2 className={`text-4xl font-black mb-16 ${lang === 'ar' ? 'text-right border-r-4' : 'text-left border-l-4'} border-purple-500 pr-6 pl-6 text-purple-400`}>
-          {data.sectionTitle}
-        </h2>
+    <section className="py-20 bg-[#030712] text-white overflow-hidden" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="container mx-auto px-6">
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {data.services.map((service, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: idx * 0.1 }}
-              className={`flex items-center gap-6 bg-slate-900/50 p-6 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all ${lang === 'ar' ? 'text-right' : 'text-left'}`}
-            >
-              <div className="p-4 bg-purple-900/20 rounded-full text-purple-400">
-                <service.icon size={32} />
-              </div>
-              <div>
-                <h3 className="font-bold text-xl mb-2">{service.title}</h3>
-                <ul className="text-sm text-slate-400 space-y-1">
-                  {service.points.map((p, i) => (
-                    <li key={i}>{lang === 'ar' ? '• ' : ''}{p}{lang === 'en' ? ' •' : ''}</li>
-                  ))}
+        {/* العنوان */}
+        <motion.h2 
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "backOut" }}
+          className="text-4xl md:text-6xl font-black text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-300 to-purple-600"
+        >
+          {data.title}
+        </motion.h2>
+        
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid lg:grid-cols-12 gap-12 items-center"
+        >
+          {/* كروت الخدمات - تظهر بالتتابع */}
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+            {data.services.map((s, idx) => (
+              <motion.div key={idx} variants={itemVariants} className="p-6 rounded-3xl bg-slate-900/50 border border-white/10 hover:border-purple-500/50 transition-colors shadow-xl">
+                <s.icon className="w-10 h-10 text-purple-500 mb-4" />
+                <h3 className="text-xl font-bold mb-4 text-white">{s.title}</h3>
+                <ul className="space-y-2">
+                  {s.points.map((p, i) => <li key={i} className="text-slate-400 text-sm">{p}</li>)}
                 </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* الصورة - حركة ظهور سينمائية */}
+          <motion.div 
+            variants={itemVariants}
+            className="lg:col-span-5 relative h-[500px] w-full rounded-3xl overflow-hidden border-2 border-purple-500/20 shadow-2xl"
+          >
+            <Image src="/images/n.png" alt="Services" fill className="object-cover" priority />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

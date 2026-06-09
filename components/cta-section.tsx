@@ -3,28 +3,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { BarChart3, TrendingUp, RefreshCw, Activity } from "lucide-react";
+import { TrendingUp, RefreshCw, Activity } from "lucide-react";
 import { useLanguage } from './LanguageContext';
 
 const DATA = {
   ar: {
-    badge: "الاستشارات المالية الاستراتيجية",
-    titleMain: "استراتيجية",
-    titleSub: "العمل المالي",
+    titleMain: "الاستشارات المالية",
+    titleSub: "والاستراتيجية",
+    badge: "الاستراتيجية التسويقية",
     services: [
-      { id: "s1", title: "إعداد الخطط المالية", desc: "إعداد الخطط المالية طويلة وقصيرة الأجل وتطوير الميزانيات.", icon: TrendingUp },
-      { id: "s2", title: "إعادة الهيكلة المالية", desc: "رفع كفاءة التشغيل وتحسين تخصيص النفقات.", icon: RefreshCw },
-      { id: "s3", title: "تحليل الأداء المالي", desc: "تقييم الأداء المالي وتقديم تقارير دقيقة.", icon: Activity },
+      { id: "s1", title: "إعداد الخطط المالية", desc: "تطوير الخطط المالية طويلة وقصيرة الأجل.", icon: TrendingUp },
+      { id: "s2", title: "إعادة الهيكلة المالية", desc: "رفع كفاءة التشغيل وتقليل النفقات الفائضة.", icon: RefreshCw },
+      { id: "s3", title: "تحليل الأداء المالي", desc: "تقديم تقارير دورية لكشف نقاط القوة وفرص التحسين.", icon: Activity },
     ]
   },
   en: {
-    badge: "STRATEGIC FINANCIAL CONSULTING",
-    titleMain: "FINANCIAL",
-    titleSub: "STRATEGY",
+    titleMain: "FINANCIAL & STRATEGIC",
+    titleSub: "CONSULTING",
+    badge: "MARKETING STRATEGY",
     services: [
-      { id: "s1", title: "Financial Planning", desc: "Long and short-term plans and budget development.", icon: TrendingUp },
-      { id: "s2", title: "Financial Restructuring", desc: "Enhance efficiency and optimize expense allocation.", icon: RefreshCw },
-      { id: "s3", title: "Financial Performance Analysis", desc: "Continuous assessment and reporting.", icon: Activity },
+      { id: "s1", title: "Financial Planning", desc: "Developing long-term and short-term financial plans.", icon: TrendingUp },
+      { id: "s2", title: "Financial Restructuring", desc: "Enhancing operational efficiency and reducing excess expenses.", icon: RefreshCw },
+      { id: "s3", title: "Financial Performance Analysis", desc: "Providing periodic reports to identify strengths and improvement opportunities.", icon: Activity },
     ]
   }
 };
@@ -41,61 +41,67 @@ export function CTASection() {
     <section 
       id="marketing-strategy" 
       ref={ref}
-      className="min-h-[85vh] flex flex-col justify-center py-12 relative overflow-hidden bg-[#030712] border-b border-white/5" 
+      className="min-h-[85vh] flex flex-col justify-center py-20 relative overflow-hidden bg-[#030712] border-b border-white/5" 
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-6 relative z-10">
         
-        {/* العنوان */}
+        {/* العنوان الرئيسي والوسام */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl lg:text-5xl font-black text-white leading-tight break-words">
+          <div className="inline-block px-6 py-2 mb-6 text-sm md:text-base font-black tracking-[0.2em] text-purple-300 uppercase bg-purple-500/10 rounded-full border border-purple-500/30 shadow-lg">
+            {data.badge}
+          </div>
+          <h2 className="text-4xl lg:text-6xl font-black text-white leading-tight uppercase">
             {data.titleMain} <span className="text-purple-500">{data.titleSub}</span>
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* الصورة - حركة أسرع (0.8 ثانية) */}
+          {/* الصورة */}
           <motion.div 
-            key={isInView ? "visible" : "hidden"}
-            initial={{ opacity: 0, rotate: -45, scale: 0.8 }}
+            initial={{ opacity: 0, rotate: -10, scale: 0.9 }}
             animate={isInView ? { opacity: 1, rotate: 0, scale: 1 } : { opacity: 0 }}
-            transition={{ 
-              duration: 0.8, 
-              ease: "easeOut" 
-            }}
-            className="lg:col-span-5 relative h-[350px] lg:h-[450px] w-full rounded-2xl overflow-hidden border border-purple-500/20 shadow-[0_0_50px_rgba(168,85,247,0.2)]"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-5 relative h-[350px] lg:h-[450px] w-full rounded-2xl overflow-hidden border border-purple-500/20 shadow-[0_0_50px_rgba(168,85,247,0.15)]"
           >
             <Image 
-              src="images/workGod.png" 
-              alt="Strategy" 
+              src="/images/workGod.png" 
+              alt="Financial Consulting" 
               fill
               priority
               className="object-cover"
             />
           </motion.div>
 
-          {/* الخدمات */}
-          <div className="lg:col-span-7 grid grid-cols-1 gap-4">
+          {/* الخدمات (بتصميم مضغوط) */}
+          <div className="lg:col-span-7 grid grid-cols-1 gap-3">
             {data.services.map((item, index) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: currentLang === 'ar' ? -20 : 20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                transition={{ duration: 0.4, delay: 0.2 + (index * 0.1) }}
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer"
+                transition={{ duration: 0.3, delay: 0.1 + (index * 0.05) }}
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer group"
               >
-                <div className="w-12 h-12 rounded-full bg-slate-950 flex items-center justify-center text-blue-400 border border-white/10">
-                  <item.icon className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-purple-400 border border-purple-500/20 shrink-0 group-hover:bg-purple-500/10">
+                  <item.icon className="w-5 h-5" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-bold text-white">{item.title}</h4>
-                  <p className="text-slate-400 text-sm">{item.desc}</p>
+                
+                {/* العنوان والوصف بجانب بعضهما */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 overflow-hidden">
+                  <h4 className="text-base font-bold text-white shrink-0 group-hover:text-purple-400 transition-colors">
+                    {item.title}
+                  </h4>
+                  <span className="hidden sm:block text-slate-700">|</span>
+                  <p className="text-slate-400 text-sm truncate">
+                    {item.desc}
+                  </p>
                 </div>
               </motion.div>
             ))}

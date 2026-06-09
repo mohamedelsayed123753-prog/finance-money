@@ -10,7 +10,8 @@ import { MainServices } from "@/components/ui/main service";
 import { FinancingJourney } from "@/components/FinancingJourney";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { FuturePlans } from "@/components/FuturePlans";
-
+import { IndividualFinancing } from "@/components/IndividualFinancing";
+import { BSSServices } from "@/components/Service-office-bss";
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
       <TestimonialsSection />
       <CTASection />
       <MainServices />
+      <IndividualFinancing />
+      <BSSServices />
       <FinancingJourney />
       <WhyChooseUs />
       <FuturePlans />

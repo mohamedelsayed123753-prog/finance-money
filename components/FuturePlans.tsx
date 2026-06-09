@@ -1,93 +1,96 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import Image from "next/image";
-import { Box, FileEdit, Megaphone } from "lucide-react";
-import { useLanguage } from './LanguageContext';
+import { motion } from "framer-motion";
+import { Box, FileText, Megaphone } from "lucide-react";
+import { useLanguage } from './LanguageContext'; 
 
-const DATA = {
+type Language = 'ar' | 'en';
+
+const DATA: Record<Language, any> = {
   ar: {
-    title: "خططنا المستقبلية",
+    titlePart1: "خططنا",
+    titlePart2: "المستقبلية",
     plans: [
-      { icon: Box, text: "إعداد دراسات الجدوى الاقتصادية الشاملة للمشاريع الجديدة والتوسعية." },
-      { icon: FileEdit, text: "دراسة وبناء خطط زيادة رأس المال واختيار مصادر التمويل الأنسب (تمويل بنكي، استثمار جريء، إلخ)." },
-      { icon: Megaphone, text: "خطة تسويقية متكاملة لإطلاق وتطوير المنتجات الجديدة." }
+      { icon: Box, title: "إعداد دراسات الجدوى الاقتصادية الشاملة للمشاريع الجديدة والتوسعية." },
+      { icon: FileText, title: "دراسة وبناء خطط زيادة رأس المال واختيار مصادر التمويل الأنسب." },
+      { icon: Megaphone, title: "خطة تسويقية لمنتج جديد." }
     ]
   },
   en: {
-    title: "OUR FUTURE PLANS",
+    titlePart1: "FUTURE",
+    titlePart2: "PLANS",
     plans: [
-      { icon: Box, text: "Preparing comprehensive economic feasibility studies for new and expansion projects." },
-      { icon: FileEdit, text: "Studying and building capital increase plans and selecting the most appropriate financing sources (bank loans, venture capital, etc.)." },
-      { icon: Megaphone, text: "An integrated marketing plan for launching and developing new products." }
+      { icon: Box, title: "Preparation of comprehensive economic feasibility studies for new and expansion projects." },
+      { icon: FileText, title: "Building capital increase plans and selecting the most appropriate funding sources." },
+      { icon: Megaphone, title: "Marketing business plan for a new product." }
     ]
   }
 };
 
 export function FuturePlans() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { lang } = useLanguage();
-  const data = DATA[lang as 'ar' | 'en'];
+  const { lang } = useLanguage(); 
+  const currentLang = (lang === 'ar' || lang === 'en') ? lang : 'ar';
+  const data = DATA[currentLang];
 
   return (
-    <section id="plans" className="py-24 bg-[#030712] text-white" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="container mx-auto px-6 relative" ref={ref}>
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
-          {/* النص والخدمات */}
-          <div className="flex-1 text-right lg:text-start order-2 lg:order-1">
-            <h2 className="text-4xl md:text-6xl font-black mb-3 bg-gradient-to-l from-purple-500 to-white bg-clip-text text-transparent leading-tight">
-              {data.title}
-            </h2>
-            <div className={`w-24 h-1 bg-purple-500 mb-10 ${lang === 'ar' ? 'mr-0' : 'ml-0'}`} />
-            
-            <div className="space-y-10">
-              {data.plans.map((plan, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, x: lang === 'ar' ? 50 : -50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
-                  className={`flex items-start gap-4 ${lang === 'ar' ? 'justify-end' : 'justify-start'}`}
-                >
-                  {lang === 'ar' ? (
-                    <>
-                      <p className="text-lg md:text-xl text-slate-300 text-right leading-relaxed max-w-2xl">{plan.text}</p>
-                      <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400 shrink-0 mt-1"><plan.icon size={26} /></div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="p-3 bg-purple-500/10 rounded-xl text-purple-400 shrink-0 mt-1"><plan.icon size={26} /></div>
-                      <p className="text-lg md:text-xl text-slate-300 text-left leading-relaxed max-w-2xl">{plan.text}</p>
-                    </>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+    <section 
+      id="future-plans" 
+      className="py-24 bg-[#02040a] text-white relative overflow-hidden" 
+      dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
+    >
+      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="mb-20 text-center lg:text-start lg:max-w-xl">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight uppercase leading-tight">
+            <span className="text-white">{data.titlePart1} </span>
+            <span className="bg-gradient-to-r from-white via-purple-200 to-purple-500 bg-clip-text text-transparent">
+              {data.titlePart2}
+            </span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-500 mt-4 rounded-full opacity-80 mx-auto lg:mx-0" />
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-8">
+            {data.plans.map((item: any, idx: number) => (
+              <motion.div
+                key={`${currentLang}-${idx}`}
+                // أنيميشن "الصعود" يضمن ظهوراً موحداً في كل اللغات
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: idx * 0.2, duration: 0.7, ease: "easeOut" }}
+                className="flex items-start gap-5 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-purple-950/40 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0 group-hover:border-purple-500/50 group-hover:text-purple-300 transition-all duration-300">
+                  <item.icon size={20} />
+                </div>
+                <div className="flex flex-col justify-center pt-2">
+                  <h4 className="text-base md:text-lg font-medium text-slate-200 group-hover:text-white transition-colors duration-300 leading-relaxed">
+                    {item.title}
+                  </h4>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* الصورة - تغطي مساحة السكشن كاملة بحركة الطفو */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex-1 w-full h-[400px] lg:h-[500px] overflow-hidden rounded-3xl relative order-1 lg:order-2"
-          >
+          <div className="lg:col-span-5 flex justify-center items-center">
             <motion.div 
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full h-full"
+              key={`img-${currentLang}`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full max-w-[400px]"
             >
-              <Image 
-                src="images/futurePlan.png" 
-                alt="Future Plans" 
-                fill
-                className="object-cover drop-shadow-[0_0_40px_rgba(168,85,247,0.4)]"
+              <img 
+                src="/images/futurePlan.png" 
+                alt="BSS Future Plans" 
+                className="w-full h-auto object-contain opacity-90 hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
