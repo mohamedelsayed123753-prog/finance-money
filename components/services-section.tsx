@@ -46,7 +46,42 @@ export function ServicesSection() {
 
   return (
     <section id="services" className="py-24 md:py-32 relative bg-[#030712] overflow-hidden" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="container mx-auto px-6" ref={ref}>
+      {/* Premium background layers */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f1420] via-[#030712] to-[#1a0a2e]" />
+        
+        {/* Organic flowing shapes */}
+        <motion.div
+          animate={{ 
+            rotate: [0, -360],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 30% 40%, #bfa15f 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, #7c3aed 0%, transparent 50%)
+            `,
+          }}
+        />
+        
+        {/* Subtle grid with golden tones */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #bfa15f 1px, transparent 1px), linear-gradient(to bottom, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
+        />
+        
+        {/* Positioned glow zones */}
+        <div className="absolute top-[30%] left-[5%] w-[500px] h-[500px] rounded-full bg-purple-600/10 blur-[150px]" />
+        <div className="absolute bottom-[-20%] right-[10%] w-[700px] h-[700px] rounded-full bg-[#bfa15f]/12 blur-[160px]" />
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10" ref={ref}>
         
         <motion.div 
             initial={{ opacity: 0, y: 20 }}

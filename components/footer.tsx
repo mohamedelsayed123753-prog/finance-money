@@ -50,12 +50,44 @@ export function Footer() {
 
   return (
     <footer id="footer" className="w-full bg-[#02040a] border-t border-purple-500/20 py-24 relative overflow-hidden" dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
-      {/* خلفية متوهجة للمسة الروشنة */}
-      <motion.div 
-        animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
-        transition={{ duration: 12, repeat: Infinity }}
-        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[150px]"
-      />
+      {/* Premium footer background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Deep gradient foundation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#02040a] via-[#0a0f1a] to-[#1a0820]" />
+        
+        {/* Flowing shapes */}
+        <motion.div
+          animate={{ 
+            rotate: [0, 180, 360],
+            scale: [1, 1.06, 1]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 40%, #bfa15f 0%, transparent 45%),
+              radial-gradient(circle at 80% 60%, #7c3aed 0%, transparent 45%)
+            `,
+          }}
+        />
+        
+        {/* Subtle golden grid */}
+        <div 
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #bfa15f 1px, transparent 1px), linear-gradient(to bottom, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
+        />
+        
+        {/* Glow zones */}
+        <motion.div 
+          animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
+          transition={{ duration: 12, repeat: Infinity }}
+          className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-[#bfa15f]/15 rounded-full blur-[160px]"
+        />
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px]" />
+      </div>
 
       <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
         

@@ -1,0 +1,22 @@
+
+> my-project@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://100.64.7.98:3000
+- Environments: .env.development.local
+✓ Ready in 334ms
+
+⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "vm-v0-mohamedelsayed123753-prog-ea9f27f9.vusercontent.net".
+Cross-origin access to Next.js dev resources is blocked by default for safety.
+
+To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+
+// next.config.js
+module.exports = {
+  allowedDevOrigins: ['vm-v0-mohamedelsayed123753-prog-ea9f27f9.vusercontent.net'],
+}
+
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 541ms (next.js: 184ms, application-code: 357ms)

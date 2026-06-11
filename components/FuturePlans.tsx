@@ -38,7 +38,40 @@ export function FuturePlans() {
       className="py-24 bg-[#02040a] text-white relative overflow-hidden" 
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[160px] pointer-events-none" />
+      {/* Premium background design */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Sophisticated gradient */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0f1a] via-[#02040a] to-[#1a1025]" />
+        
+        {/* Flowing organic elements */}
+        <motion.div
+          animate={{ 
+            rotate: [0, -180, -360],
+            x: [0, -40, 0]
+          }}
+          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 40% 60%, #bfa15f 0%, transparent 48%),
+              radial-gradient(circle at 60% 30%, #7c3aed 0%, transparent 48%)
+            `,
+          }}
+        />
+        
+        {/* Geometric golden pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `linear-gradient(45deg, #bfa15f 1px, transparent 1px), linear-gradient(-45deg, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '70px 70px'
+          }}
+        />
+        
+        {/* Glowing zones */}
+        <div className="absolute top-1/3 right-1/4 w-[700px] h-[700px] bg-[#bfa15f]/11 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-[5%] left-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none" />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-20 text-center lg:text-start lg:max-w-xl">

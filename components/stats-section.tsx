@@ -60,7 +60,42 @@ export function StatsSection() {
 
   return (
     <section id="stats" className="py-24 relative bg-[#030712] overflow-hidden" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="container mx-auto px-6" ref={ref}>
+      {/* Premium background composition */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Gradient foundation with depth */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#0a1318] via-[#030712] to-[#1e0f2a]" />
+        
+        {/* Animated radial shapes with golden theme */}
+        <motion.div
+          animate={{ 
+            rotate: [0, 180, 360],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 60% 30%, #bfa15f 0%, transparent 45%),
+              radial-gradient(circle at 40% 70%, #7c3aed 0%, transparent 45%)
+            `,
+          }}
+        />
+        
+        {/* Geometric pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #bfa15f 1px, transparent 1px), linear-gradient(to bottom, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '55px 55px'
+          }}
+        />
+        
+        {/* Strategic glow placement */}
+        <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] rounded-full bg-[#bfa15f]/11 blur-[150px]" />
+        <div className="absolute bottom-[10%] left-[-15%] w-[700px] h-[700px] rounded-full bg-purple-600/9 blur-[160px]" />
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div 
           variants={containerVariants} 
           initial="hidden" 

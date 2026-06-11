@@ -65,18 +65,40 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[#030712]/40" />
       </motion.div>
 
-      {/* 2. الخلفية الرقمية */}
-      <div className="absolute inset-0 z-10 will-change-transform opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f]/20 via-[#030712]/20 to-[#0f172a]/20" />
-        <div 
-          className="absolute inset-0 opacity-[0.05]"
+      {/* 2. الخلفية الرقمية الممتازة */}
+      <div className="absolute inset-0 z-10 will-change-transform">
+        {/* Base gradient with dark tones */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#030712] via-[#0a1928] to-[#1a0f2e]" />
+        
+        {/* Animated flowing shapes inspired by logo */}
+        <motion.div
+          animate={{ 
+            rotate: [0, 360],
+            y: [0, -30, 0]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: `linear-gradient(to right, #3b82f6 1px, transparent 1px), linear-gradient(to bottom, #3b82f6 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
+            backgroundImage: `
+              radial-gradient(circle at 20% 50%, #bfa15f 0%, transparent 40%),
+              radial-gradient(circle at 80% 80%, #7c3aed 0%, transparent 40%)
+            `,
           }}
         />
-        <div className="absolute top-[30%] left-[20%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[10%] w-[600px] h-[600px] rounded-full bg-purple-600/15 blur-[130px] pointer-events-none" />
+        
+        {/* Geometric grid pattern with golden accent */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #bfa15f 1px, transparent 1px), linear-gradient(to bottom, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }}
+        />
+        
+        {/* Premium glow zones */}
+        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full bg-[#bfa15f]/8 blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[5%] right-[15%] w-[700px] h-[700px] rounded-full bg-purple-600/10 blur-[160px] pointer-events-none" />
+        <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/8 blur-[140px] pointer-events-none" />
       </div>
 
       {/* 3. المحتوى */}
