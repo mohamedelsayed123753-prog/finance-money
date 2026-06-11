@@ -37,9 +37,30 @@ export function AboutSection() {
       dir={lang === "ar" ? "rtl" : "ltr"}
     >
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-[#0b1329] to-[#030712]" />
-        <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#bfa15f]/5 blur-[120px]" />
-        <div className="absolute bottom-[15%] left-[-5%] w-[500px] h-[500px] rounded-full bg-purple-600/5 blur-[100px]" />
+        {/* Premium gradient foundation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1320] via-[#030712] to-[#1a0f28]" />
+        
+        {/* Flowing diagonal lines inspired by logo geometry */}
+        <motion.div
+          animate={{ 
+            x: [0, 50, 0],
+            y: [0, -50, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage: `
+              linear-gradient(45deg, #bfa15f 1px, transparent 1px),
+              linear-gradient(-45deg, #bfa15f 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px'
+          }}
+        />
+        
+        {/* Premium glow spots with golden accent */}
+        <div className="absolute top-[15%] right-[-15%] w-[700px] h-[700px] rounded-full bg-[#bfa15f]/10 blur-[160px]" />
+        <div className="absolute bottom-[10%] left-[5%] w-[600px] h-[600px] rounded-full bg-purple-600/8 blur-[150px]" />
+        <div className="absolute top-[50%] left-[-20%] w-[500px] h-[500px] rounded-full bg-[#bfa15f]/8 blur-[140px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>

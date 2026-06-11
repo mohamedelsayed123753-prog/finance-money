@@ -44,6 +44,40 @@ export function CTASection() {
       className="min-h-[85vh] flex flex-col justify-center py-20 relative overflow-hidden bg-[#030712] border-b border-white/5" 
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
+      {/* Premium dynamic background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Rich gradient foundation */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#0a1320] via-[#030712] to-[#1f0f30]" />
+        
+        {/* Flowing animated elements */}
+        <motion.div
+          animate={{ 
+            rotate: [0, -180, -360],
+            x: [0, 30, -30, 0]
+          }}
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 35% 45%, #bfa15f 0%, transparent 50%),
+              radial-gradient(circle at 65% 55%, #7c3aed 0%, transparent 50%)
+            `,
+          }}
+        />
+        
+        {/* Golden accent grid */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #bfa15f 1px, transparent 1px), linear-gradient(to bottom, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '65px 65px'
+          }}
+        />
+        
+        {/* Strategic glow placement */}
+        <div className="absolute top-[15%] left-[5%] w-[700px] h-[700px] rounded-full bg-[#bfa15f]/12 blur-[160px]" />
+        <div className="absolute bottom-[-20%] right-[5%] w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-[150px]" />
+      </div>
       <div className="container mx-auto px-6 relative z-10">
         
         {/* العنوان الرئيسي والوسام */}

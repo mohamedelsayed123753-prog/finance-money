@@ -40,9 +40,40 @@ export function WhyChooseUs() {
       className="py-24 bg-[#02040a] text-white relative overflow-hidden flex flex-col items-center w-full" 
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
-      {/* تأثيرات الإضاءة خلفية ثابتة */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[150px] pointer-events-none" />
+      {/* Premium sophisticated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Gradient foundation */}
+        <div className="absolute inset-0 bg-gradient-to-bl from-[#0a0f1a] via-[#02040a] to-[#1f0820]" />
+        
+        {/* Organic flowing patterns */}
+        <motion.div
+          animate={{ 
+            rotate: [0, 180],
+            scale: [1, 1.07, 1]
+          }}
+          transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 30% 50%, #bfa15f 0%, transparent 48%),
+              radial-gradient(circle at 70% 40%, #7c3aed 0%, transparent 48%)
+            `,
+          }}
+        />
+        
+        {/* Golden grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #bfa15f 1px, transparent 1px), linear-gradient(to bottom, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '75px 75px'
+          }}
+        />
+        
+        {/* Strategic glow placement */}
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#bfa15f]/12 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none" />
+      </div>
 
       {/* الـ container مضبوط بـ mx-auto لضمان التمركز التام */}
       <div className="container mx-auto px-6 relative z-10 w-full flex flex-col items-center">

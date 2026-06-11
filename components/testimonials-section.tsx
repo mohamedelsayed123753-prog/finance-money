@@ -64,9 +64,40 @@ export function TestimonialsSection() {
 
   return (
     <section id="financial-plan" className="py-24 md:py-32 relative overflow-hidden bg-[#060b19]" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{ backgroundImage: "linear-gradient(to right, #3b82f6 1px, transparent 1px), linear-gradient(to bottom, #3b82f6 1px, transparent 1px)", backgroundSize: "40px 40px" }} 
-      />
+      {/* Premium background design */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Sophisticated gradient */}
+        <div className="absolute inset-0 bg-gradient-to-bl from-[#060b19] via-[#0f1420] to-[#1a0a28]" />
+        
+        {/* Flowing organic shapes */}
+        <motion.div
+          animate={{ 
+            rotate: [0, 180],
+            scale: [1, 1.08, 1]
+          }}
+          transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 55%, #bfa15f 0%, transparent 48%),
+              radial-gradient(circle at 75% 35%, #7c3aed 0%, transparent 48%)
+            `,
+          }}
+        />
+        
+        {/* Premium diagonal grid */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(45deg, #bfa15f 1px, transparent 1px), linear-gradient(-45deg, #bfa15f 1px, transparent 1px)`,
+            backgroundSize: '70px 70px'
+          }}
+        />
+        
+        {/* Glow accents */}
+        <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#bfa15f]/10 blur-[150px]" />
+        <div className="absolute bottom-[-15%] left-[10%] w-[700px] h-[700px] rounded-full bg-purple-600/10 blur-[160px]" />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
