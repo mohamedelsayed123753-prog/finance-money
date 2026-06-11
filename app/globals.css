@@ -12,19 +12,27 @@
     -webkit-font-smoothing: antialiased; 
   }
 
-  html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    overflow-x: hidden !important; 
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    line-height: 1.6; 
+  html {
+    scroll-behavior: smooth; /* ده بيساعد الـ JS يعمل سكرول طبيعي */
+    overflow-x: hidden;
   }
 
-  
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
   h1, h2, h3, h4 {
     letter-spacing: -0.025em;
     font-weight: 700;
   }
+}
+body {
+   pointer-events: auto ;
 }

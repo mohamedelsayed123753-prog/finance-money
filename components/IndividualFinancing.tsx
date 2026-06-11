@@ -1,96 +1,70 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from './LanguageContext'; 
+import { ShieldCheck, Target } from "lucide-react";
 
-const CONTENT = {
-  ar: {
-    title: "تمويل الأفراد",
-    card1Title: "دراسة جدوى التمويل العقاري والشخصي وخطط الادخار والاستثمار",
-    card1Desc: "نساعدك في تحليل وتقييم قدراتك المالية واختيار أفضل الحلول التمويلية المتاحة لتملك العقار أو الحصول على تمويل شخصي مع بناء خطة استثمارية متوازنة.",
-    card2Title: "ترتيب تمويل للأفراد العاطلين عن العمل",
-    card2Desc: "تقديم استشارات وحلول متكاملة لترتيب وتسهيل الحصول على الدعم والتمويل المناسب للفئات التي لا رأس مال لها أو تبحث عن بدء مشاريعها الخاصة."
-  },
-  en: {
-    title: "INDIVIDUAL FINANCING",
-    card1Title: "FEASIBILITY STUDY FOR REAL ESTATE AND PERSONAL FINANCING, SAVINGS AND INVESTMENT PLANS",
-    card1Desc: "We help you analyze and assess your financial capabilities, choose the best available financing solutions for real estate or personal loans, and build a balanced investment plan.",
-    card2Title: "ARRANGING FINANCING FOR UNEMPLOYED INDIVIDUALS",
-    card2Desc: "Providing integrated consultations and solutions to arrange and facilitate access to appropriate support and financing for groups without capital or looking to start their own businesses."
-  }
+const ARABIC_CONTENT = {
+  title: "تمويل الأفراد",
+  cards: [
+    { id: "c1", title: "دراسة جدوى التمويل العقاري والشخصي وخطط الادخار والاستثمار", icon: Target },
+    { id: "c2", title: "ترتيب تمويل للأفراد العاطلين عن العمل", icon: ShieldCheck }
+  ]
+};
+
+const ENGLISH_CONTENT = {
+  title: "INDIVIDUAL FINANCING",
+  cards: [
+    { id: "c1", title: "FEASIBILITY STUDY FOR REAL ESTATE AND PERSONAL FINANCING, SAVINGS AND INVESTMENT PLANS", icon: Target },
+    { id: "c2", title: "ARRANGING FINANCING FOR UNEMPLOYED INDIVIDUALS", icon: ShieldCheck }
+  ]
 };
 
 export function IndividualFinancing() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const { lang } = useLanguage();
-  const data = (lang === 'ar' || lang === 'en') ? CONTENT[lang] : CONTENT.ar;
+  const data = useMemo(() => (lang === 'ar' ? ARABIC_CONTENT : ENGLISH_CONTENT), [lang]);
 
-  const coinSpinVariants = {
-    hidden: { opacity: 0, rotateY: 720, scale: 0.3 },
+  const coinVariants = {
+    hidden: { rotateY: 180, opacity: 0 },
     visible: { 
-      opacity: 1, 
       rotateY: 0, 
-      scale: 1,
-      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } 
-    }
-  };
-
-  const textRevealVariants = {
-    hidden: { opacity: 0, filter: "blur(5px)", y: 10 },
-    visible: { 
       opacity: 1, 
-      filter: "blur(0px)", 
-      y: 0,
-      transition: { delay: 1.2, duration: 0.8, ease: "easeOut" } 
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
     }
   };
 
   return (
-    <section id="IndividualFinancing" className="py-20 bg-[#030712] text-white overflow-hidden relative">
-      <div className="container mx-auto px-6 relative z-10" ref={containerRef}>
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-white tracking-tight">
+    <section id="IndividualFinancing" className="py-20 bg-[#030712] text-white w-full" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="container mx-auto px-6">
+        
+        {/* زيادة التباعد بين السطور للعنوان الرئيسي */}
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-20 leading-snug text-transparent bg-clip-text bg-gradient-to-r from-[#e5c378] to-[#bfa15f]">
           {data.title}
         </h2>
-
-        {/* الحاويات متشابكة بتنسيق ثابت ومتناظر */}
-        <div className="flex flex-row items-center justify-center -space-x-16">
-          
-          {/* الدائرة الزرقاء (في الخلف) */}
-          <motion.div
-            variants={coinSpinVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="w-[380px] h-[380px] rounded-full border-2 border-blue-500/30 bg-gradient-to-b from-slate-900/40 to-blue-950/10 p-8 flex flex-col justify-center items-center text-center z-10"
-          >
-            <motion.div variants={textRevealVariants} className="flex flex-col items-center justify-center h-full">
-              <h3 className="text-sm font-bold text-blue-200 mb-4 leading-snug w-[220px]">
-                {data.card2Title}
-              </h3>
-              <p className="text-xs text-slate-400 leading-relaxed w-[240px]">
-                {data.card2Desc}
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* الدائرة الأرجوانية (في المقدمة - تداخل) */}
-          <motion.div
-            variants={coinSpinVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="w-[380px] h-[380px] rounded-full border-2 border-purple-500/40 bg-gradient-to-b from-slate-900/60 to-purple-950/20 p-8 flex flex-col justify-center items-center text-center z-20 shadow-[0_0_50px_rgba(168,85,247,0.15)]"
-          >
-            <motion.div variants={textRevealVariants} className="flex flex-col items-center justify-center h-full">
-              <h3 className="text-sm font-bold text-white mb-4 leading-snug w-[220px]">
-                {data.card1Title}
-              </h3>
-              <p className="text-xs text-slate-400 leading-relaxed w-[240px]">
-                {data.card1Desc}
-              </p>
-            </motion.div>
-          </motion.div>
-
+        
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 w-full [perspective:1000px]">
+          {data.cards.map((card) => {
+            const Icon = card.icon;
+            return (
+              <motion.div 
+                key={`${lang}-${card.id}`}
+                variants={coinVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                // إضافة h-full و flex-col مع justify-center لتوزيع النص
+                className="w-[280px] h-[280px] rounded-full border-2 border-[#bfa15f] bg-[#0a0f1d] flex flex-col justify-center items-center text-center p-8 shadow-[0_0_20px_rgba(191,161,95,0.2)]"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <Icon size={40} className="text-[#bfa15f] mb-4 flex-shrink-0" />
+                {/* ضبط الـ leading (line-height) ليكون مريحاً للعين */}
+                <h3 className="text-sm md:text-base font-bold text-white leading-relaxed tracking-wide">
+                  {card.title}
+                </h3>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

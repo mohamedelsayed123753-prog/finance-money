@@ -2,126 +2,83 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import { useLanguage } from './LanguageContext';
 import Image from 'next/image';
 
-const CONTENT = {
-  ar: {
-    titlePart1: "مكتب الحلول  ",
-    titlePart2: "والاستشارات المالية ",
-    desc: "بناء الاستراتيجيات للحلول والاستشارات",
-    btn1: "ابدأ رحلتك معنا",
-    btn2: "شاهد قصتنا"
-  },
-  en: {
-    titlePart1: "Strategy Building Solutions ",
-    titlePart2: "",
-    desc: "We provide integrated financial consulting solutions for companies and individuals, with our commitment to the highest quality and transparency standards.",
-    btn1: "Start your journey with us",
-    btn2: "Watch our story"
-  }
-};
-
 export function HeroSection() {
   const { lang } = useLanguage();
-  const data = CONTENT[lang as 'ar' | 'en'] || CONTENT['ar'];
 
-  const handleSmoothScroll = (id: string) => {
-    const element = document.getElementById(id);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id.replace('#', ''));
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({ 
+        top: element.getBoundingClientRect().top + window.pageYOffset - 80, 
+        behavior: "smooth" 
+      });
     }
   };
 
   return (
-    <section
-      key={lang}
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030712] text-slate-900"
-      dir={lang === 'ar' ? 'rtl' : 'ltr'}
-    >
-      {/* 1. طبقة الصورة المتحركة (شاملة كل الاتجاهات) */}
+    <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#030712]">
+      
+      {/* 1. الخلفية السينمائية */}
       <motion.div 
-        animate={{ 
-          x: [0, -20, 20, -10, 0], 
-          y: [0, 15, -15, 10, 0],
-          scale: [1, 1.07, 1.04, 1]
-        }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.05 }} 
+        transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
         className="absolute inset-0 z-0"
       >
-        <Image 
-          src="/images/heroImage.png" 
-          alt="Background"
-          fill
-          priority
-          className="object-cover opacity-80"
-        />
-        <div className="absolute inset-0 bg-[#030712]/40" />
+        <Image src="/images/heronew.png" alt="Financial Strategy" fill priority className="object-cover object-[65%_center]" quality={85} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-transparent" />
       </motion.div>
 
-      {/* 2. الخلفية الرقمية */}
-      <div className="absolute inset-0 z-10 will-change-transform opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f]/20 via-[#030712]/20 to-[#0f172a]/20" />
-        <div 
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: `linear-gradient(to right, #3b82f6 1px, transparent 1px), linear-gradient(to bottom, #3b82f6 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}
-        />
-        <div className="absolute top-[30%] left-[20%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[10%] w-[600px] h-[600px] rounded-full bg-purple-600/15 blur-[130px] pointer-events-none" />
-      </div>
-
-      {/* 3. المحتوى */}
-      <div className="container mx-auto px-6 relative z-20 pt-20 flex flex-col items-center text-center gap-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
+      {/* 2. المحتوى */}
+      <div className="container relative z-10 flex flex-col items-center text-center px-6">
+        
+        {/* العنوان السينمائي (التدرج اللوني + تباعد الحروف) */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-3"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 tracking-tight leading-[1.1] drop-shadow-2xl px-4"
         >
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white drop-shadow-2xl">
-            {data.titlePart1}<span className="text-purple-500">{data.titlePart2}</span>
-          </h1>
+          {lang === 'ar' ? "مكتب الحلول والاستشارات المالية" : "Strategy Building Solutions"}
+        </motion.h1>
+
+        {/* العبارة الفرعية */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-8 px-8 py-3 border border-[#bfa15f]/50 rounded-full backdrop-blur-sm"
+        >
+          <p className="text-lg md:text-2xl font-semibold text-[#f5e0a6] tracking-wide">
+            {lang === 'ar' ? "بناء الاستراتيجيات للحلول والاستشارات المالية" : "Building Strategies for Financial Consulting"}
+          </p>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-2xl text-white font-medium leading-relaxed max-w-3xl bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-white/10"
-        >
-          {data.desc}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2"
+        {/* الأزرار */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          className="flex gap-4 mt-10"
         >
           <Button 
+            onClick={() => scrollToSection('#services')}
             size="lg" 
-            onClick={() => handleSmoothScroll('services')}
-            className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-6 text-lg font-bold shadow-lg shadow-blue-600/20"
+            className="bg-[#bfa15f] text-black font-bold rounded-full px-8 py-6 hover:scale-105 transition-all"
           >
-            {data.btn1} {lang === 'ar' ? <ArrowLeft className="mr-2 h-5 w-5" /> : <ArrowLeft className="ml-2 h-5 w-5" />}
+            {lang === 'ar' ? "ابدأ رحلتك" : "Start Journey"}
           </Button>
 
           <Button 
-            size="lg" 
-            variant="outline" 
-            onClick={() => handleSmoothScroll('about')}
-            className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg font-bold"
+            onClick={() => scrollToSection('#about')}
+            variant="ghost" 
+            className="text-white hover:bg-white/10 rounded-full px-8 py-6"
           >
-            {lang === 'ar' ? <Play className="ml-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />} {data.btn2}
+            <Play className="mr-2 h-4 w-4 fill-current" /> {lang === 'ar' ? "شاهد قصتنا" : "Watch Story"}
           </Button>
         </motion.div>
       </div>

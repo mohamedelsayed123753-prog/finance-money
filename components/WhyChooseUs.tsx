@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import { Network, Cpu, Settings, Award } from "lucide-react";
 import { useLanguage } from './LanguageContext'; 
 
-type Language = 'ar' | 'en';
-
-const DATA: Record<Language, any> = {
+const DATA: any = {
   ar: {
     titlePart1: "لماذا تختار",
     titlePart2: "مكتب بناء الاستراتيجيات للحلول والاستشارات المالية ؟",
@@ -34,52 +32,43 @@ export function WhyChooseUs() {
   const currentLang = (lang === 'ar' || lang === 'en') ? lang : 'ar';
   const data = DATA[currentLang];
 
-  return (
-    <section 
-      id="why-us" 
-      className="py-24 bg-[#02040a] text-white relative overflow-hidden flex flex-col items-center w-full" 
-      dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
-    >
-      {/* تأثيرات الإضاءة خلفية ثابتة */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[150px] pointer-events-none" />
+  const titleVariant = {
+    animate: {
+      color: ["#ffffff", "#bfa15f", "#ffffff"],
+      transition: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+    }
+  };
 
-      {/* الـ container مضبوط بـ mx-auto لضمان التمركز التام */}
+  return (
+    <section id="why-us" className="py-24 bg-[#030712] text-white relative overflow-hidden flex flex-col items-center w-full" dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6 relative z-10 w-full flex flex-col items-center">
         
-        {/* العنوان */}
         <div className="text-center mb-20 max-w-4xl w-full">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight leading-tight uppercase">
-            <span className="text-white block mb-3 md:inline md:mb-0">{data.titlePart1} </span>
-            <span className="bg-gradient-to-r from-white via-purple-200 to-purple-500 bg-clip-text text-transparent block md:inline">
+          <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase">
+            <span className="block mb-2">{data.titlePart1} </span>
+            <motion.span animate={titleVariant.animate} className="block">
               {data.titlePart2}
-            </span>
+            </motion.span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-indigo-500 mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* الـ grid متمركز باستخدام justify-items-center */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl justify-items-center">
           {data.reasons.map((item: any, idx: number) => (
             <motion.div
               key={`${currentLang}-${idx}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.1, duration: 0.6, ease: "easeOut" }}
-              // العرض هنا max-w-[350px] يضمن اتزان الكرت في كل الشاشات
-              className="w-full max-w-[350px] bg-[#0f1118]/80 backdrop-blur-sm p-8 rounded-3xl border border-purple-500/10 hover:border-purple-500/60 transition-all duration-300 group flex flex-col justify-between relative"
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              whileHover={{ scale: 1.05, borderColor: "#bfa15f" }}
+              className="w-full max-w-[350px] bg-[#0a0f1d] p-8 rounded-3xl border border-[#bfa15f]/20 transition-colors duration-500 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 bg-purple-950/40 rounded-2xl flex items-center justify-center mb-6 text-purple-400 border border-purple-500/20 group-hover:scale-110 group-hover:text-purple-300 transition-all duration-300">
+                <div className="w-12 h-12 bg-[#bfa15f]/10 rounded-2xl flex items-center justify-center mb-6 text-[#bfa15f] border border-[#bfa15f]/20">
                   <item.icon size={22} />
                 </div>
-                <h4 className="text-base md:text-lg font-bold mb-4 text-slate-100 group-hover:text-purple-300 transition-colors uppercase tracking-wide">
-                  {item.title}
-                </h4>
-                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors">
-                  {item.desc}
-                </p>
+                <h4 className="text-base md:text-lg font-bold mb-4 text-white uppercase">{item.title}</h4>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>
           ))}
