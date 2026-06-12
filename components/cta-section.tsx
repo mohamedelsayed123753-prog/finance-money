@@ -8,22 +8,18 @@ import { TrendingUp, RefreshCw, Activity } from "lucide-react";
 import { useLanguage } from './LanguageContext';
 
 const ARABIC_CONTENT = {
-  titleMain: "الاستشارات المالية",
-  titleSub: "والاستراتيجية",
   services: [
-    { id: "s1", title: "تخطيط مالي", desc: "إعداد الخطط المالية طويلة وقصيرة الأجل وتطوير الميزانيات التقديرية.", icon: TrendingUp },
-    { id: "s2", title: "إعادة هيكلة", desc: "إعادة الهيكلة المالية للشركات لرفع كفاءة التشغيل وتقليص النفقات الفائضة.", icon: RefreshCw },
-    { id: "s3", title: "تحليل الأداء", desc: "تحليل الأداء المالي وتقديم تقارير دورية لكشف نقاط القوة وفرص التحسين.", icon: Activity },
+    { id: "s1",  desc: "إعداد الخطط المالية طويلة وقصيرة الأجل وتطوير الميزانيات التقديرية.", icon: TrendingUp },
+    { id: "s2",  desc: "إعادة الهيكلة المالية للشركات لرفع كفاءة التشغيل وتقليص النفقات الفائضة.", icon: RefreshCw },
+    { id: "s3", desc: "تحليل الأداء المالي وتقديم تقارير دورية لكشف نقاط القوة وفرص التحسين.", icon: Activity },
   ]
 };
 
 const ENGLISH_CONTENT = {
-  titleMain: "FINANCIAL",
-  titleSub: "STRATEGY",
   services: [
-    { id: "s1", title: "Financial Planning", desc: "Preparing long-term and short-term financial plans and developing estimated budgets.", icon: TrendingUp },
-    { id: "s2", title: "Restructuring", desc: "Financial restructuring for companies to enhance operational efficiency and reduce excess expenses.", icon: RefreshCw },
-    { id: "s3", title: "Performance Analysis", desc: "Analyzing financial performance and providing periodic reports to identify strengths and improvement opportunities.", icon: Activity },
+    { id: "s1",  desc: "Preparing long-term and short-term financial plans and developing estimated budgets.", icon: TrendingUp },
+    { id: "s2",  desc: "Financial restructuring for companies to enhance operational efficiency and reduce excess expenses.", icon: RefreshCw },
+    { id: "s3", desc: "Analyzing financial performance and providing periodic reports to identify strengths and improvement opportunities.", icon: Activity },
   ]
 };
 
@@ -53,17 +49,6 @@ export function CTASection() {
     <section id="consulting" ref={ref} className="py-24 relative bg-[#030712] overflow-hidden" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6 relative z-10">
         
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-black leading-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500">
-              {data.titleMain}{" "}
-            </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bfa15f] to-[#f5e0a6]">
-              {data.titleSub}
-            </span>
-          </h2>
-        </motion.div>
-
         <motion.div variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"} className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div variants={imageVariants} className="lg:col-span-5 relative h-[400px] w-full rounded-3xl overflow-hidden border border-[#bfa15f]/20">
             <Image src="/images/sha.png" alt="Consulting" fill className="object-cover" />
@@ -77,8 +62,8 @@ export function CTASection() {
                   <item.icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 group-hover:text-[#bfa15f] transition-colors">{item.title}</h4>
-                  <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                  <h4 className="text-2xl font-bold text-white mb-2 group-hover:text-[#bfa15f] transition-colors">{item.title}</h4>
+                  <p className="text-base text-slate-400 leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
