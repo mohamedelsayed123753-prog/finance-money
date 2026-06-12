@@ -19,7 +19,6 @@ const DATA: Record<Language, any> = {
     subThankYou: "نتطلع للعمل معكم وبناء مستقبلك المالي الأفضل.",
     contactTitle: "تواصل معنا",
     location: "الرياض - الخليج - شارع سلمان الفارسي",
-    hours: "الأحد - الخميس: ٩ ص - ٦ م",
     email: "hanan@bss-corp.net",
     website: "www.hanan.com",
     phones: [
@@ -32,7 +31,6 @@ const DATA: Record<Language, any> = {
     subThankYou: "We look forward to working with you",
     contactTitle: "Contact Us",
     location: "Riyadh - Al Khaleej - Salman Al Farsi Street",
-    hours: "Sun - Thu: 9 AM - 6 PM",
     email: "hanan@bss-corp.net",
     website: "www.hanan.com",
     phones: [
@@ -50,7 +48,7 @@ export function Footer() {
 
   return (
     <footer id="footer" className="w-full bg-[#030712] border-t border-[#bfa15f]/20 py-24 relative overflow-hidden" dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
-      {/* خلفية ذهبية متوهجة هادئة */}
+   
       <motion.div 
         animate={{ opacity: [0.1, 0.2, 0.1], scale: [1, 1.05, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -59,7 +57,7 @@ export function Footer() {
 
       <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
         
-        {/* عمود الصورة */}
+       
         <div className="lg:col-span-5">
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -76,7 +74,7 @@ export function Footer() {
             </motion.div>
         </div>
 
-        {/* عمود الكونتنت */}
+    
         <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -90,7 +88,7 @@ export function Footer() {
               <p className="text-[#bfa15f]/70 mt-4 text-lg font-medium">{data.subThankYou}</p>
           </div>
 
-          {/* بيانات الاتصال بتنسيق ذهبي */}
+        
           <div className="bg-[#0a0f1d]/50 backdrop-blur-xl border border-[#bfa15f]/10 p-8 rounded-[2rem]">
             <h3 className="text-[#bfa15f] font-bold uppercase tracking-widest text-sm border-l-2 border-[#bfa15f] pl-4 mb-8">{data.contactTitle}</h3>
             
@@ -108,7 +106,7 @@ export function Footer() {
                 <div className="space-y-4 text-slate-300">
                     <div className="flex items-center gap-3"><Mail size={18} className="text-[#bfa15f]" /> {data.email}</div>
                     <div className="flex items-center gap-3"><Globe size={18} className="text-[#bfa15f]" /> {data.website}</div>
-                    <div className="flex items-center gap-3"><Clock size={18} className="text-[#bfa15f]" /> {data.hours}</div>
+                    {/* <div className="flex items-center gap-3"><Clock size={18} className="text-[#bfa15f]" /> {data.hours}</div> */}
                     <div className="flex items-center gap-3"><MapPin size={18} className="text-[#bfa15f]" /> {data.location}</div>
                 </div>
             </div>

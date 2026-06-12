@@ -20,8 +20,8 @@ const DATA: any = {
     titlePart2: "US ?",
     reasons: [
       { icon: Network, title: "EXTENSIVE NETWORK OF RELATIONSHIPS", desc: "We maintain a strong network of banking institutions and investment entities to facilitate effective financing solutions." },
-      { icon: Cpu, title: "COMMITMENT TO TECHNOLOGY", desc: "We integrate the latest financial analysis software and AI technologies to ensure accuracy, efficiency, and rapid results." },
-      { icon: Settings, title: "CUSTOMIZED SOLUTIONS", desc: "We do not believe in one-size-fits-all solutions; we assess each organization individually to deliver tailored solutions." },
+      { icon: Cpu, title: "COMMITMENT TO TECHNOLOGY", desc: "We integrate the latest financial analysis software as well as artificial intelligence technologies to ensure accuracy, efficiency, and rapid results." },
+      { icon: Settings, title: "CUSTOMIZED SOLUTIONS", desc: "We do not believe in one-size-fits-all solutions; we carefully assess each organization individually to deliver tailored solutions that directly support its business objectives." },
       { icon: Award, title: "EXTENSIVE EXPERIENCE", desc: "A team with decades of accumulated experience in multiple financial and investment sectors." }
     ]
   }

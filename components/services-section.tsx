@@ -20,7 +20,7 @@ const ENGLISH_CONTENT = {
   visionTitle: "VISION",
   visionText: "We are the first destination as well as the most trusted choice for providing smart financial advice and solutions in the region.",
   missionTitle: "MISSION",
-  missionText: "Enabling companies and investors to make correct financial decisions based on scientific principles and accurate analysis, ensuring profit maximization and efficient risk management.",
+  missionText: "Enabling companies and investors to make correct financial decisions based on scientific principles and accurate analysis,including the ensuring profit maximization and efficient risk management.",
 };
 
 export function ServicesSection() {

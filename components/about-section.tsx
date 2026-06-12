@@ -5,23 +5,18 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useLanguage } from "./LanguageContext";
 
-// فصل البيانات بشكل كامل لضمان استقلالية اللغتين
 const ARABIC_DATA = {
   title1: "من",
   title2: "نحن؟",
   subtitle: "شريكك الاستراتيجي للنجاح",
-  desc1: "نحن نمثل الشريك الاستراتيجي الموثوق لعملائنا في رحلتهم نحو تحقيق الاستدامة والتميز المالي. يضم المكتب نخبة من الخبراء والمستشارين الماليين المرخصين الملتزمين بتقديم تحليلات دقيقة ورؤى مبتكرة تتوافق مع التغيرات الديناميكية في الأسواق المحلية والعالمية.",
-  visionTitle: "رؤيتنا تتجاوز الأرقام",
-  visionDesc: "نحن لا نقدم أرقاماً فحسب، بل نحول التحديات المالية المعقدة إلى فرص نمو ملموسة، معتمدين على الأسس العلمية والخبرة التراكمية لضمان مستقبل مالي مستدام لمؤسستك.",
+  desc1: "نحن نمثل الشريك الاستراتيجي الموثوق لعملائنا في رحلتهم نحو تحقيق الاستدامة والتميز المالي. يضم المكتب نخبة من الخبراء والمستشارين الماليين المرخصين الملتزمين بتقديم تحليلات دقيقة ورؤى مبتكرة تتوافق مع التغيرات الديناميكية في الأسواق المحلية والعالمية. ونقوم بتقديم استشارات مالية وتمويلية لحل المشاكل التي تواجه الشركات والمؤسسات في الحصول على القروض من البنوك وشركات التمويل، وكذلك نقوم بتحويل التحديات المالية المعقدة إلى فرص نمو ملموسة عبر صياغة استراتيجيات مخصصة تناسب تطلعات كل عميل.",
 };
 
 const ENGLISH_DATA = {
   title1: "ABOUT",
   title2: "COMPANY",
   subtitle: "Your Trusted Strategic Partner",
-  desc1: "We are a trusted strategic partner for our clients on their journey toward achieving sustainability and financial excellence. Our firm comprises a select group of licensed financial experts and advisors committed to providing accurate analyses and innovative insights that keep pace with the dynamic changes in local and global markets.",
-  visionTitle: "OUR VISION GOES BEYOND NUMBERS",
-  visionDesc: "We don't just provide numbers; we transform complex financial challenges into tangible growth opportunities by developing customized strategies tailored to each client's specific aspirations.",
+  desc1: "We are a trusted strategic partner for our clients on their journey toward achieving sustainability and financial excellence. Our firm comprises a select group of licensed financial experts and advisors committed to providing accurate analyses and innovative insights that keep pace with the dynamic changes in local and global markets. We offer financial and funding advice to help companies and institutions overcome the challenges of securing loans from banks and finance companies. Furthermore, we transform complex financial challenges into tangible growth opportunities by developing customized strategies tailored to each client's specific aspirations.",
 };
 
 export function AboutSection() {
@@ -30,7 +25,6 @@ export function AboutSection() {
   const { lang } = useLanguage();
   const data = lang === "ar" ? ARABIC_DATA : ENGLISH_DATA;
 
-  // أنيميشن الزجزاج المرن
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -67,11 +61,9 @@ export function AboutSection() {
             </h2>
             <div className="flex flex-col gap-3">
               <span className="text-[#bfa15f]/90 text-xl font-bold">{data.subtitle}</span>
-              <p className="text-slate-300 text-lg leading-relaxed font-medium">{data.desc1}</p>
-            </div>
-            <div className="pt-4 border-t border-[#bfa15f]/20">
-              <span className="text-[#bfa15f] text-sm font-bold uppercase tracking-widest mb-2 block">{data.visionTitle}</span>
-              <p className="text-slate-400 text-base leading-relaxed">{data.visionDesc}</p>
+              <p className="text-slate-300 text-lg leading-relaxed font-medium">
+                {data.desc1}
+              </p>
             </div>
           </motion.div>
 

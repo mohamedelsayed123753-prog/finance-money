@@ -20,8 +20,8 @@ const DATA: Record<Language, any> = {
     titlePart1: "FUTURE",
     titlePart2: "PLANS",
     plans: [
-      { icon: Box, title: "Preparation of comprehensive economic feasibility studies for new and expansion projects." },
-      { icon: FileText, title: "Building capital increase plans and selecting the most appropriate funding sources (Bank financing, VC, etc)." },
+      { icon: Box, title: "A team with decades of accumulated experience across diverse financial and investment sectors." },
+      { icon: FileText, title: "The preparation of comprehensive economic feasibility studies for new and expansion projects." },
       { icon: Megaphone, title: "Marketing business plan for a new product." }
     ]
   }

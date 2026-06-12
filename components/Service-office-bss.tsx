@@ -6,30 +6,30 @@ import { useLanguage } from './LanguageContext';
 
 // البيانات الخاصة باللغة العربية فقط
 const ARABIC_SERVICES = [
-  { id: "01", title: "تحليل الميزانية", desc: "دراسة وتحليل القوائم المالية لضمان استقرار الأداء المالي والنمو المستدام." },
-  { id: "02", title: "خدمات تحويل الشركة ذات مسؤولية محدودة لمساهمة مغلقة", desc: "خدمات تحويل كيان الشركة ذات مسؤولية محدودة إلى شركة مساهمة مغلقة." },
-  { id: "03", title: "إدارة المشاريع الحكومية والخاصة", desc: "إدارة متكاملة للمشاريع الحكومية والخاصة لضمان التنفيذ الفعال ودقة المواعيد." },
-  { id: "04", title: "خدمات استشارة الادارة العليا", desc: "تقديم استشارات استراتيجية للإدارة العليا لرفع كفاءة الأعمال." },
-  { id: "05", title: "تجهيز شهادات الايزو", desc: "تأهيل وتجهيز المنشآت للحصول على شهادات الآيزو العالمية." },
-  { id: "06", title: "خدمات حوكمة الشركات وإعادة هيكلة الشركات", desc: "تقديم خدمات حوكمة الشركات وإعادة الهيكلة لتعزيز الأداء المؤسسي." },
-  { id: "07", title: "التجهيز لشهادة محتوى محلي", desc: "تجهيز وتأهيل الشركات للحصول على شهادات المحتوى المحلي." },
-  { id: "08", title: "خدمات تنظيم الشركات والمساعدة في تجهيزها لسوق المال", desc: "تقديم خدمات تنظيم الشركات والمساعدة في تهيئتها لمتطلبات سوق المال." },
-  { id: "09", title: "تحضير التصنيف", desc: "دعم الشركات في إجراءات تحضير والحصول على التصنيفات المهنية." },
-  { id: "10", title: "التسويق والتصميم", desc: "تقديم خدمات متكاملة في التسويق والهوية البصرية والتصميم." }
+  { id: "01", title: "تحليل الميزانية"},
+  { id: "02", title: "خدمات تحويل كيان الشركة ذات مسئولية محدودة لمساهمة مغلقة"},
+  { id: "03", title: "إدارة المشاريع الحكومية والخاصة" },
+  { id: "04", title: "خدمات استشارة الادارة العليا" },
+  { id: "05", title: "تجهيز شهادات الايزو" },
+  { id: "06", title: "خدمات حوكمة الشركات وإعادة هيكلة الشركات" },
+  { id: "07", title: "التجهيز لشهادة محتوى محلي" },
+  { id: "08", title: "خدمات تنظيم الشركات والمساعدة في تجهيزها لسوق المال" },
+  { id: "09", title: "تحضير التصنيف" },
+  { id: "10", title: "التسويق والتصميم" }
 ];
 
-// البيانات الخاصة باللغة الإنجليزية فقط
+
 const ENGLISH_SERVICES = [
-  { id: "01", title: "Budget analysis", desc: "Budget analysis" },
-  { id: "02", title: "Services for converting a limited liability company entity into a closed joint-stock company.", desc: "Services for converting a limited liability company entity into a closed joint-stock company." },
-  { id: "03", title: "MANAGEMENT OF GOVERNMENT AND PRIVATE PROJECTS", desc: "MANAGEMENT OF GOVERNMENT AND PRIVATE PROJECTS" },
-  { id: "04", title: "Senior management consulting services", desc: "Senior management consulting services" },
-  { id: "05", title: "PREPARING ISO CERTIFICATES", desc: "PREPARING ISO CERTIFICATES" },
-  { id: "06", title: "Corporate governance and corporate restructuring services", desc: "Corporate governance and corporate restructuring services" },
-  { id: "07", title: "Preparing for a local content certification", desc: "Preparing for a local content certification" },
-  { id: "08", title: "Corporate organization services and assistance in preparing companies for the capital market", desc: "Corporate organization services and assistance in preparing companies for the capital market" },
-  { id: "09", title: "Preparing the classification", desc: "Preparing the classification" },
-  { id: "10", title: "Marketing and design", desc: "Marketing and design" }
+  { id: "01", title: "Budget analysis" },
+  { id: "02", title: "Services for converting a limited liability company entity into a closed joint-stock company." },
+  { id: "03", title: "MANAGEMENT OF GOVERNMENT AND PRIVATE PROJECTS" },
+  { id: "04", title: "Senior management consulting services" },
+  { id: "05", title: "PREPARING ISO CERTIFICATES" },
+  { id: "06", title: "Corporate governance and corporate restructuring services" },
+  { id: "07", title: "Preparing for a local content certification"},
+  { id: "08", title: "Corporate organization services and assistance in preparing companies for the capital market" },
+  { id: "09", title: "Preparing the classification" },
+  { id: "10", title: "Marketing and design" }
 ];
 
 export function BSSServices() {

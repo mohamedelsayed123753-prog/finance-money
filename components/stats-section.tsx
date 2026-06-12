@@ -6,13 +6,12 @@ import Image from "next/image";
 import { ShieldCheck, Lightbulb, Lock, Star } from "lucide-react";
 import { useLanguage } from './LanguageContext';
 
-// 1. ضع التعريفات هنا في أعلى الملف (خارج الدوال)
 const ARABIC_DATA = {
   sectionTitle: "القيم الجوهرية",
   items: [
     { id: "commitment", title: "الالتزام", desc: "الالتزام بأعلى المعايير الأخلاقية، والمهنية والشفافية المطلقة.", icon: ShieldCheck },
     { id: "innovation", title: "الابتكار", desc: "تطوير حلول مالية مرنة ومبتكرة، تواكب العصر الرقمي.", icon: Lightbulb },
-    { id: "quality", title: "الجودة", desc: "الالتزام بتقديم خدمات وحلول مالية عالية الجودة وفق أفضل المعايير لتحقيق رضا العملاء.", icon: Lock },
+    { id: "quality", title: "الجودة", desc: "الالتزام بتقديم خدمات وحلول مالية عالية الجودة وفق أفضل المعايير لضمان رضاالعملاء وتحقيق نتائج مستدامه.", icon: Lock },
     { id: "confidentiality", title: "السرية", desc: "حماية بيانات العملاء ومعلوماتهم المالية بأقصى درجات الأمان.", icon: Star },
   ]
 };
@@ -22,7 +21,7 @@ const ENGLISH_DATA = {
   items: [
     { id: "commitment", title: "COMMITMENT", desc: "Commitment to the highest ethical and professional standards and absolute transparency.", icon: ShieldCheck },
     { id: "innovation", title: "INNOVATION", desc: "Developing flexible and innovative financial solutions that keep pace with the digital era.", icon: Lightbulb },
-    { id: "quality", title: "QUALITY", desc: "Delivering high-quality financial services and solutions according to the highest standards to ensure customer satisfaction.", icon: Lock },
+    { id: "quality", title: "QUALITY", desc: "Delivering high-quality financial services and solutions according to the highest standards to ensure customer satisfaction and sustainable results.", icon: Lock },
     { id: "confidentiality", title: "CONFIDENTIALITY", desc: "Safeguarding customer data and financial information using the highest security standards.", icon: Star },
   ]
 };
@@ -32,25 +31,26 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const { lang } = useLanguage();
   
-  // 2. الآن `useMemo` ستجد البيانات معرفة ومتاحة
   const data = useMemo(() => (lang === 'ar' ? ARABIC_DATA : ENGLISH_DATA), [lang]);
 
+  // --- تم تعديل الأنيميشن هنا فقط ليكون سموزي ---
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1, 
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 } 
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 } // سرعة تتابع أعلى
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: lang === 'ar' ? 50 : -50 },
+    hidden: { opacity: 0, x: lang === 'ar' ? 20 : -20 }, // مسافة حركة أقل
     visible: { 
       opacity: 1, 
       x: 0, 
-      transition: { type: "spring", stiffness: 80, damping: 15 } 
+      transition: { type: "spring", stiffness: 120, damping: 18 } // استجابة أسرع وتوقف ناعم
     }
   };
+  // ---------------------------------------------
 
   return (
     <section id="stats" className="py-24 relative bg-[#030712] overflow-hidden" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
