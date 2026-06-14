@@ -22,7 +22,7 @@ const DATA: Record<Language, any> = {
     email: "hanan@bss-corp.net",
     website: "www.hanan.com",
     phones: [
-      { display: "0532300548", label: "اتصال" },
+      { display: "0532300458", label: "اتصال" },
       { display: "0550699276", label: "واتس" }
     ],
   },
@@ -34,7 +34,7 @@ const DATA: Record<Language, any> = {
     email: "hanan@bss-corp.net",
     website: "www.hanan.com",
     phones: [
-      { display: "0532300548", label: "call" },
+      { display: "0532300458", label: "call" },
       { display: "0550699276", label: "wats" }
     ],
   }

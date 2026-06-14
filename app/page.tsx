@@ -12,6 +12,8 @@ import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { FuturePlans } from "@/components/FuturePlans";
 import { IndividualFinancing } from "@/components/IndividualFinancing";
 import { BSSServices } from "@/components/Service-office-bss";
+import { TrustedPartners } from "@/components/TrustedPartners";
+import { CredentialsSection } from "@/components/CredentialsSection";
 
 export default function Home() {
   return (
@@ -23,6 +25,8 @@ export default function Home() {
       <StatsSection />
       <TestimonialsSection />
       <CTASection />
+      <TrustedPartners />
+      <CredentialsSection />
       <MainServices />
       <IndividualFinancing />
       <BSSServices />
