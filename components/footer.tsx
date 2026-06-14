@@ -70,6 +70,7 @@ export function Footer() {
                   alt="BSS Office" 
                   fill
                   className="object-cover transition-transform duration-[2s] group-hover:scale-105"
+                  priority
               />
             </motion.div>
         </div>

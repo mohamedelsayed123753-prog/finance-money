@@ -75,6 +75,7 @@ export function ServicesSection() {
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop"
               alt="Vision Mission"
               fill
+              priority 
               className="object-cover hover:scale-105 transition-transform duration-[2s]"
             />
           </motion.div>

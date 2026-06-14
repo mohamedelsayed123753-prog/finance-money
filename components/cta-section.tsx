@@ -51,7 +51,7 @@ export function CTASection() {
         
         <motion.div variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"} className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div variants={imageVariants} className="lg:col-span-5 relative h-[400px] w-full rounded-3xl overflow-hidden border border-[#bfa15f]/20">
-            <Image src="/images/sha.png" alt="Consulting" fill className="object-cover" />
+            <Image src="/images/sha.png" alt="Consulting" fill className="object-cover" priority  />
             <div className="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent/50" />
           </motion.div>
 

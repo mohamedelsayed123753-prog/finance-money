@@ -6,14 +6,16 @@ import { StatsSection } from "@/components/stats-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
-import { MainServices } from "@/components/ui/main service";
+import { MainServices } from "@/components/ui/main service"; 
 import { FinancingJourney } from "@/components/FinancingJourney";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { FuturePlans } from "@/components/FuturePlans";
 import { IndividualFinancing } from "@/components/IndividualFinancing";
 import { BSSServices } from "@/components/Service-office-bss";
-import { TrustedPartners } from "@/components/TrustedPartners";
-import { CredentialsSection } from "@/components/CredentialsSection";
+import dynamic from 'next/dynamic';
+
+const TrustedPartners = dynamic(() => import('@/components/TrustedPartners').then((mod) => mod.TrustedPartners || mod.default));
+const CredentialsSection = dynamic(() => import('@/components/CredentialsSection').then((mod) => mod.CredentialsSection || mod.default));
 
 export default function Home() {
   return (

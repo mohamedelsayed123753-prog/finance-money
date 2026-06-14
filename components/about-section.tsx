@@ -80,7 +80,9 @@ export function AboutSection() {
                   src="/images/newaboutUspng.png" 
                   alt="About BSS Office" 
                   fill 
+                  sizes="(max-width: 768px) 100vw, 500px" // هذا التعديل يخبر الموبايل ألا يحمل صورة أكبر من حاجته
                   className="object-cover"
+                  priority 
                 />
               </div>
             </div>

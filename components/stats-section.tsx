@@ -72,6 +72,7 @@ export function StatsSection() {
               src="/images/vision.png" 
               alt="Core Values" 
               fill 
+              priority 
               className="object-cover transition-transform duration-[3s] hover:scale-105" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent" />

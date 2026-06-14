@@ -3,13 +3,13 @@
 @theme {
   --color-background: oklch(0.08 0 0);
   --color-foreground: oklch(0.98 0 0);
-  --font-sans: 'Cairo', sans-serif;
+  --font-sans: "Cairo", sans-serif;
 }
 
 @layer base {
   * {
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased; 
+    -webkit-font-smoothing: antialiased;
   }
 
   html {
@@ -26,13 +26,37 @@
     color: var(--color-foreground);
     line-height: 1.6;
     overflow-x: hidden;
+     pointer-events: auto;
+    
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     letter-spacing: -0.025em;
     font-weight: 700;
   }
 }
-body {
-   pointer-events: auto ;
+
+ 
+
+section {
+  scroll-margin-top: 80px;}
+
+.hero-image-container {
+  will-change: transform;
+  transform: translateZ(0); /* هذه الخدعة تجبر الموبايل على استخدام GPU */
+}
+
+.smooth-hero-motion {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  contain: paint;
+}
+
+nav {
+  position: fixed !important;
+  z-index: 9999 !important;
 }
