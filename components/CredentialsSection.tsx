@@ -30,7 +30,6 @@ export function CredentialsSection() {
           )}
         </motion.h2>
 
-        {/* استخدمنا grid بـ 3 أعمدة لضمان العرض بجانب بعضهم دائماً */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 justify-items-center">
           {CREDENTIALS.map((cred, index) => (
             <motion.div
@@ -45,7 +44,6 @@ export function CredentialsSection() {
               }}
               whileHover={{ scale: 1.05, y: -10 }}
               onClick={() => setSelected(cred.src)}
-              // عرض ثابت ومناسب للعرض في صف واحد
               className="relative w-full max-w-[400px] h-[280px] lg:h-[320px] cursor-pointer bg-[#0a0f1d] p-3 rounded-[2rem] shadow-[0_20px_0px_rgba(191,161,95,0.4)] group"
             >
               <Image 

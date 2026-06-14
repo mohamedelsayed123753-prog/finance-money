@@ -33,24 +33,23 @@ export function StatsSection() {
   
   const data = useMemo(() => (lang === 'ar' ? ARABIC_DATA : ENGLISH_DATA), [lang]);
 
-  // --- تم تعديل الأنيميشن هنا فقط ليكون سموزي ---
+ 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1, 
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 } // سرعة تتابع أعلى
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: lang === 'ar' ? 20 : -20 }, // مسافة حركة أقل
+    hidden: { opacity: 0, x: lang === 'ar' ? 20 : -20 }, 
     visible: { 
       opacity: 1, 
       x: 0, 
-      transition: { type: "spring", stiffness: 120, damping: 18 } // استجابة أسرع وتوقف ناعم
+      transition: { type: "spring", stiffness: 120, damping: 18 }  
     }
   };
-  // ---------------------------------------------
 
   return (
     <section id="stats" className="py-24 relative bg-[#030712] overflow-hidden" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
@@ -61,7 +60,7 @@ export function StatsSection() {
           animate={isInView ? "visible" : "hidden"} 
           className="grid lg:grid-cols-12 gap-16 items-center"
         >
-          {/* الصورة تظهر أولاً */}
+         
           <motion.div 
             variants={{
                 hidden: { opacity: 0, scale: 0.8 },
@@ -78,7 +77,7 @@ export function StatsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#030712] to-transparent" />
           </motion.div>
 
-          {/* النص يظهر تالياً */}
+        
           <div className="lg:col-span-7 flex flex-col gap-8">
             <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-slate-400 px-2 py-2">
               {data.sectionTitle}

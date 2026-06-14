@@ -52,7 +52,7 @@ export function TestimonialsSection() {
   const { lang } = useLanguage();
   const data = useMemo(() => DATA[lang === 'ar' ? 'ar' : 'en'], [lang]);
 
-  // إعادة ضبط المؤشر عند تغيير اللغة لتجنب أي أخطاء في العرض
+
   useMemo(() => setCurrentIndex(0), [lang]);
 
   const next = useCallback(() => setCurrentIndex((prev) => (prev + 1) % data.steps.length), [data.steps.length]);

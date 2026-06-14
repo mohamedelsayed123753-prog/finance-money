@@ -39,13 +39,13 @@ export function TrustedPartners() {
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 1, ease: "easeOut" }}
               
-              // الـ Hover هنا بيخلي الكارت يكبر "بنعومة" ويهتز هزة كرتونية خفيفة
+             
               whileHover={{ 
                 scale: 1.15, 
                 rotate: [0, -3, 3, -3, 0],
               }}
               
-              // كبرنا العرض (w-full max-w-[650px]) وشلنا البوردر تماماً
+             
               className="relative w-full max-w-[650px] h-96 bg-[#0a0f1d] rounded-[3rem] p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center cursor-pointer"
             >
               <Image 

@@ -38,7 +38,7 @@ export function IndividualFinancing() {
     <section id="IndividualFinancing" className="py-20 bg-[#030712] text-white w-full" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
         
-        {/* زيادة التباعد بين السطور للعنوان الرئيسي */}
+       
         <h2 className="text-3xl md:text-5xl font-black text-center mb-20 leading-snug text-transparent bg-clip-text bg-gradient-to-r from-[#e5c378] to-[#bfa15f]">
           {data.title}
         </h2>
@@ -53,12 +53,12 @@ export function IndividualFinancing() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                // إضافة h-full و flex-col مع justify-center لتوزيع النص
+           
                 className="w-[280px] h-[280px] rounded-full border-2 border-[#bfa15f] bg-[#0a0f1d] flex flex-col justify-center items-center text-center p-8 shadow-[0_0_20px_rgba(191,161,95,0.2)]"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Icon size={40} className="text-[#bfa15f] mb-4 flex-shrink-0" />
-                {/* ضبط الـ leading (line-height) ليكون مريحاً للعين */}
+                
                 <h3 className="text-sm md:text-base font-bold text-white leading-relaxed tracking-wide">
                   {card.title}
                 </h3>

@@ -40,7 +40,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-[1000] bg-transparent transition-all duration-300" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6 h-20 flex justify-between items-center">
         
-        {/* اللوجو */}
+      
         <motion.button 
           whileHover={{ scale: 1.05 }}
           onClick={() => scrollToSection('#home')} 
@@ -49,7 +49,7 @@ export function Navbar() {
           <img src="/images/bssnew.png" alt="BSS Logo" className="h-10 w-auto object-contain" />
         </motion.button>
 
-        {/* روابط الـ Desktop */}
+       
         <div className="hidden lg:flex flex-1 justify-center gap-8">
           {navLinks.map((link) => (
             <motion.button 
@@ -65,7 +65,7 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* زر اللغة Desktop */}
+       
         <motion.button 
           whileHover={{ scale: 1.05, backgroundColor: "#bfa15f", color: "#000" }}
           whileTap={{ scale: 0.95 }}
@@ -75,7 +75,7 @@ export function Navbar() {
           {lang === 'ar' ? 'EN' : 'AR'}
         </motion.button>
 
-        {/* زر الموبايل */}
+      
         <button 
           className="lg:hidden text-[#bfa15f] w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[1001] cursor-pointer" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -86,7 +86,7 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 

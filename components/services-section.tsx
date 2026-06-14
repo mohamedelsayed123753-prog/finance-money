@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Target, Lightbulb } from "lucide-react";
 import { useLanguage } from './LanguageContext';
 
-// 1. تأكد أن تعريفات المحتوى موجودة هنا في بداية الملف
+
 const ARABIC_CONTENT = {
   sectionTitle: "الرؤية والرسالة",
   visionTitle: "الرؤية",
@@ -28,7 +28,7 @@ export function ServicesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { lang } = useLanguage();
   
-  // 2. الآن `useMemo` ستجد المتغيرات معرفة بوضوح
+  
   const data = useMemo(() => (lang === 'ar' ? ARABIC_CONTENT : ENGLISH_CONTENT), [lang]);
 
   const containerVariants = {
