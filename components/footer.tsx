@@ -28,7 +28,7 @@ const DATA: Record<Language, any> = {
     email: "hanan@bss-corp.net",
     website: "www.hanan.com",
     phones: [
-      { display: " git add .", label: "call" },
+      { display: "0532300548", label: "call" },
       { display: "0550699276", label: "wats" }
     ],
   }
