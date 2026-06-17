@@ -19,6 +19,9 @@ const PARTNERS: Partner[] = [
   { id: 5, name: "Vitasoy", logo: "/images/5trusted.png" },
   { id: 6, name: "Bickford's Group", logo: "/images/6trusted.png" },
   { id: 7, name: "Bickford's", logo: "/images/7trusted.png" },
+  { id: 8, name: "Bickford's", logo: "/images/8trusted.png" },
+  
+
 ];
 
 const INFINITE_PARTNERS = [...PARTNERS, ...PARTNERS];

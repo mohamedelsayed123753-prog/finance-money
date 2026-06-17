@@ -7,12 +7,6 @@ import { motion } from "framer-motion";
 
 type Language = 'ar' | 'en';
 
-const formatNumber = (num: string, lang: Language) => {
-  if (lang !== 'ar') return num;
-  const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-  return num.replace(/[0-9]/g, (d) => arabicDigits[parseInt(d)]);
-};
-
 const DATA: Record<Language, any> = {
   ar: {
     thankYou: "شكراً لكم",
@@ -34,7 +28,7 @@ const DATA: Record<Language, any> = {
     email: "hanan@bss-corp.net",
     website: "www.hanan.com",
     phones: [
-      { display: "0532300458", label: "call" },
+      { display: "0532300548", label: "call" },
       { display: "0550699276", label: "wats" }
     ],
   }
@@ -98,7 +92,7 @@ export function Footer() {
                     {data.phones.map((p: any, i: number) => (
                         <div key={i} className="flex items-center gap-4">
                             <div className="p-2 bg-[#bfa15f]/10 rounded-lg"><Phone size={18} className="text-[#bfa15f]" /></div>
-                            <span className="text-lg font-mono tracking-wider text-white">{formatNumber(p.display, currentLang)}</span>
+                            <span className="text-lg font-mono tracking-wider text-white">{p.display}</span>
                             <span className="text-xs text-[#bfa15f]/60">({p.label})</span>
                         </div>
                     ))}
@@ -107,7 +101,6 @@ export function Footer() {
                 <div className="space-y-4 text-slate-300">
                     <div className="flex items-center gap-3"><Mail size={18} className="text-[#bfa15f]" /> {data.email}</div>
                     <div className="flex items-center gap-3"><Globe size={18} className="text-[#bfa15f]" /> {data.website}</div>
-                    {/* <div className="flex items-center gap-3"><Clock size={18} className="text-[#bfa15f]" /> {data.hours}</div> */}
                     <div className="flex items-center gap-3"><MapPin size={18} className="text-[#bfa15f]" /> {data.location}</div>
                 </div>
             </div>
